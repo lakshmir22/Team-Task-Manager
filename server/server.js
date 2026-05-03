@@ -12,7 +12,9 @@ app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
 // ==================== AUTH ROUTES ====================
-
+app.get("/", (req, res) => {
+  res.send("TaskFlow API is running successfully");
+});
 // Signup
 app.post('/api/auth/signup', async (req, res) => {
   try {
@@ -515,8 +517,8 @@ app.put('/api/tasks/:taskId', authenticateToken, (req, res) => {
 
     // Members can only update status of tasks assigned to them
     if (membership.role === 'member') {
-      if (title !== undefined || description !== undefined || assignee_id !== undefined || 
-          priority !== undefined || due_date !== undefined) {
+      if (title !== undefined || description !== undefined || assignee_id !== undefined ||
+        priority !== undefined || due_date !== undefined) {
         return res.status(403).json({ error: 'Members can only update task status' });
       }
 
