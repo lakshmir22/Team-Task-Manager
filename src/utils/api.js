@@ -1,4 +1,4 @@
-const API_BASE = '/api';
+const API_BASE = 'https://team-task-manager-production-40ad.up.railway.app/api';
 function getToken() { return localStorage.getItem('taskflow_token'); }
 export function setToken(t) { localStorage.setItem('taskflow_token', t); }
 export function removeToken() { localStorage.removeItem('taskflow_token'); }
